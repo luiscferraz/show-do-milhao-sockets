@@ -13,6 +13,14 @@ public class Pergunta {
 	
 	//aqui seria especificado a alternativa correta
 	private char respostaCorreta;
+	
+	public Pergunta(String pergunta, String altA, String altB, String altC, String altD, char resposta){
+		this.pergunta = pergunta;
+		this.alternativaA = altA;
+		this.alternativaB = altB;
+		this.alternativaC = altC;
+		this.respostaCorreta = resposta;
+	}
 
 	public String getPergunta() {
 		return pergunta;
