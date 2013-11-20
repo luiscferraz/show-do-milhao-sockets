@@ -17,13 +17,22 @@ public class TCPServidor {
 	public static void main(String args[]) {
 		try {
 			int porta = 6789; // porta do servico
+			
 			if (args.length > 0) porta = Integer.parseInt(args[0]);
+			
 			ServerSocket escuta = new ServerSocket(porta);
+			
 			System.out.println("*** Servidor ***");
+			
 			System.out.println("*** Porta de escuta (listen): " + porta);
+			
 			while (true) {
 				// accept bloqueia ate que chegue um pedido de conexao de um cliente
+				// Assim que um cliente se conectar, o programa continuará, por isso dizemos que esse método é blocante, 
+				//segura a thread até que algo o notifique.
+				//Nesta caso, escuta faz o papel de servidor.
 				Socket cliente = escuta.accept();
+				
 				System.out.println("*** conexao aceita de (remoto): " + cliente.getRemoteSocketAddress());
 				// quando chega, cria nova thread para atender apenas o cliente
 				Conexao c = new Conexao(cliente);
