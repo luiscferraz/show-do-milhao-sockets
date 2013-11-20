@@ -69,7 +69,11 @@ public class Pergunta {
 	public void setRespostaCorreta(char respostaCorreta) {
 		this.respostaCorreta = respostaCorreta;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Pergunta - " + pergunta + "\n\n a) "
+				+ alternativaA + "\n b)" + alternativaB
+				+ "\n c)" + alternativaC + "\n d)" + alternativaD + "\n";
+	}
 }
