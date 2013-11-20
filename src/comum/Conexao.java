@@ -27,7 +27,7 @@ class Conexao extends Thread {
 	public void run() {
 		try {
 			String recebido = ent.readUTF();
-			sai.writeUTF("Oi " + recebido.toUpperCase() +"!");
+			sai.writeUTF(recebido);
 			System.out.println("recebido de " + recebido);
 		}
 		catch (EOFException e) {
