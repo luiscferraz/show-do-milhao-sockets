@@ -27,6 +27,7 @@ public class TCPCliente {
 			// le buffer de entrada
 			String recebido = ent.readUTF();
 			System.out.println("*** Recebido do servidor: " + recebido);
+			
 		}
 		catch (UnknownHostException e) {
 			System.out.println("!!! Servidor desconhecido: " + e.getMessage());
