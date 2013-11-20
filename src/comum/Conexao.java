@@ -45,5 +45,12 @@ class Conexao extends Thread {
 			}
 		}
 	}
+	
+	/**Por fim, basta ler todas as informações que o cliente nos enviar:
+		Scanner scanner = new Scanner(cliente.getInputStream());
+
+		while (scanner.hasNextLine()) {
+  		System.out.println(scanner.nextLine());
+   */
 
 }

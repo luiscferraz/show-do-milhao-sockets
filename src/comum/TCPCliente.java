@@ -18,10 +18,10 @@ public class TCPCliente {
 		Socket s = null;
 
 		try {
-			s = new Socket("172.16.180.204", 6789); // conecta o socket aa porta remota
+			s = new Socket("localhost", 6789); // conecta o socket aa porta remota
 			DataInputStream ent = new DataInputStream(s.getInputStream());
 			DataOutputStream sai = new DataOutputStream(s.getOutputStream());
-			for(int i=0; i < 1000; i++) {
+			for(int i=0; i < 10; i++) {
 				sai.writeUTF("testando_123!");
 			}
 			// le buffer de entrada
