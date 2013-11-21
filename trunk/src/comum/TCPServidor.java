@@ -22,9 +22,9 @@ public class TCPServidor {
 			
 			ServerSocket escuta = new ServerSocket(porta);
 			
-			System.out.println("*** Servidor ***");
+			//System.out.println("*** Servidor ***");
 			
-			System.out.println("*** Porta de escuta (listen): " + porta);
+			//System.out.println("*** Porta de escuta (listen): " + porta);
 			
 			while (true) {
 				// accept bloqueia ate que chegue um pedido de conexao de um cliente
@@ -33,9 +33,11 @@ public class TCPServidor {
 				//Nesta caso, escuta faz o papel de servidor.
 				Socket cliente = escuta.accept();
 				
-				System.out.println("*** conexao aceita de (remoto): " + cliente.getRemoteSocketAddress());
+				//System.out.println("*** conexao aceita de (remoto): " + cliente.getRemoteSocketAddress());
 				// quando chega, cria nova thread para atender apenas o cliente
 				Conexao c = new Conexao(cliente);
+				
+				System.out.println("Tecle I para iniciar um novo jogo:");
 			}
 		} catch (IOException e) {
 			System.out.println("Erro na escuta: " + e.getMessage());

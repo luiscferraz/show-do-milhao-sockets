@@ -28,7 +28,7 @@ class Conexao extends Thread {
 		try {
 			String recebido = ent.readUTF();
 			sai.writeUTF(recebido);
-			System.out.println("recebido de " + recebido);
+			//System.out.println("recebido de " + recebido);
 		}
 		catch (EOFException e) {
 			System.out.println("Conexao: EOFException " + e.getMessage());
