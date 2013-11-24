@@ -39,10 +39,9 @@ public class TCPServidor {
 					Jogo jogo = new Jogo();
 					
 					//Para saber o nome do jogador para ser armazenado na lista de melhores
-					//System.out.println("Digite seu nome:");
+					System.out.println("Digite seu nome:");
 					String nome = entrada.nextLine();
 					Jogador jogadorAtual = new Jogador(nome);
-					
 					
 					jogo.novaPergunta();
 					
@@ -51,28 +50,37 @@ public class TCPServidor {
 						try{
 						//caso a pergunta tenha sido respondida corretamente
 							if (jogo.responder(answer.charAt(0))) {
-								//coloquei essa linha para ele pontuar quando acertar uma pergunta
-								jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+1000);
-								
-								
-								System.out.println("SCORE:"+jogadorAtual.getPontuacao());
-								System.out.println(jogadorAtual.getNome());
-								
+													
+									
 								System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
-								//jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+1000);
-								
 								
 								if (entrada.hasNextLine()) {
 									if (entrada.nextLine().equalsIgnoreCase("n")) {
 										sair = true;
+										
+										//Se o jogo for encerrado deve mostrar o nome do jogador e a pontuação do mesmo
+										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+500);
+										System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
+										System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
+										
+										
 										break;
 									} else {
+										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+1000);
+										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao());
 										jogo.novaPergunta();
 									}
 								}
 							//caso contrario, sai do jogo
 							} else {
 								sair = true;
+								
+								System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
+								System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
+								
+								//adiciona o jogador a lista de jogadores p armazenar seu nome e score
+								jogadores.add(jogadorAtual);
+								
 								break;
 							}
 						} catch (Exception ex){
