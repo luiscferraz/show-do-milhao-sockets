@@ -33,6 +33,8 @@ public class TCPServidor {
 				boolean sair = false;
 				String answer = entrada.nextLine();
 				
+				int pulos = 3;
+				
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
 					
@@ -44,10 +46,23 @@ public class TCPServidor {
 					Jogador jogadorAtual = new Jogador(nome);
 					
 					jogo.novaPergunta();
+					System.out.println("Digite 'P' para pular esta pergunta");
 					
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
 						try{
+							
+							if (answer.equalsIgnoreCase("p")){
+								if (pulos>0){
+									pulos = pulos-1;
+									jogo.novaPergunta();
+									System.out.println("Digite 'P' para pular esta pergunta");
+								}
+								else{
+									System.out.println("Você já utilizou suas três opções de pulo, informe a resposta desta pergunta.");
+								}
+							}
+							
 						//caso a pergunta tenha sido respondida corretamente
 							if (jogo.responder(answer.charAt(0))) {
 													
@@ -69,6 +84,7 @@ public class TCPServidor {
 										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+1000);
 										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao());
 										jogo.novaPergunta();
+										System.out.println("Digite 'P' para pular esta pergunta");
 									}
 								}
 							//caso contrario, sai do jogo
