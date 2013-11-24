@@ -30,13 +30,19 @@ public class Jogo {
 	}
 	
 	public boolean responder(char resposta) {
-		if (perguntaAtual.certaResposta(resposta)) {
-			System.out.println("CERTA RESPOSTA!!\n\n");
-			
-			//retira a pergunta respondida corretamente da lista remanescente.
-			perguntas.remove(perguntaAtual);
-			return true;
-		} else {
+		try{
+			if (perguntaAtual.certaResposta(resposta)) {
+				System.out.println("CERTA RESPOSTA!!\n\n");
+				
+				//retira a pergunta respondida corretamente da lista remanescente.
+				perguntas.remove(perguntaAtual);
+				return true;
+			} else {
+				System.out.println("VOCÊ ERROU!\n\n");
+				return false;
+			}
+		}catch(Exception ex){
+			System.out.println(ex.getMessage());
 			System.out.println("VOCÊ ERROU!\n\n");
 			return false;
 		}

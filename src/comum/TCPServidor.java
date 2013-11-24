@@ -37,23 +37,29 @@ public class TCPServidor {
 					
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
-						
+						try{
 						//caso a pergunta tenha sido respondida corretamente
-						if (jogo.responder(answer.charAt(0))) {
-							System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
-							if (entrada.hasNextLine()) {
-								if (entrada.nextLine().equalsIgnoreCase("n")) {
-									sair = true;
-									break;
-								} else {
-									jogo.novaPergunta();
+							if (jogo.responder(answer.charAt(0))) {
+								System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
+								if (entrada.hasNextLine()) {
+									if (entrada.nextLine().equalsIgnoreCase("n")) {
+										sair = true;
+										break;
+									} else {
+										jogo.novaPergunta();
+									}
 								}
+							//caso contrario, sai do jogo
+							} else {
+								sair = true;
+								break;
 							}
-						//caso contrario, sai do jogo
-						} else {
+						} catch (Exception ex){
 							sair = true;
+							//System.out.println("Opcao invalida. JOGO ENCERRADO!");
 							break;
 						}
+						
 					}
 				}
 				
