@@ -82,18 +82,29 @@ public class Jogo {
 	}
 	
 	public int pontuarSeguindoJogo(int numeroDaPergunta){
+		//Das perguntas 1 a 6
 		if (numeroDaPergunta>=1 && numeroDaPergunta<=5){
-			return 1000;
-			
-		} else{
-			if (numeroDaPergunta>=6 && numeroDaPergunta<=10){
-				return 10000;	
-			}else{
-				if (numeroDaPergunta>=11 && numeroDaPergunta<=15){
-					return 100000;
+			return 1000;			
+		} else {
+			if(numeroDaPergunta==6){
+				return 5000;
+			}else {
+				if (numeroDaPergunta>=7 && numeroDaPergunta<=10){
+					return 10000;	
+				}else{
+					if(numeroDaPergunta==11){
+						return 50000;
+					} else {
+						if (numeroDaPergunta>=12 && numeroDaPergunta<=15){
+							return 100000;
+						}
+					}
+					
 				}
 			}
+			
 		}
+		
 		return 500000;
 	}
 	
