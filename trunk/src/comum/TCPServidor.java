@@ -10,35 +10,56 @@ package comum;
  */
 
 import java.net.*;
+import java.util.Scanner;
 import java.io.*;
+
+import jogo.Jogo;
 
 public class TCPServidor {
 	
 	public static void main(String args[]) {
 		try {
-			int porta = 6789; // porta do servico
+			ServerSocket servidor = new ServerSocket(6789);
+	
+			Socket cliente = servidor.accept();
+			System.out.println("Tecle 'I' para iniciar um novo jogo e 'S' para sair.");
+			Scanner entrada = new Scanner(cliente.getInputStream());
 			
-			if (args.length > 0) porta = Integer.parseInt(args[0]);
-			
-			ServerSocket escuta = new ServerSocket(porta);
-			
-			//System.out.println("*** Servidor ***");
-			
-			//System.out.println("*** Porta de escuta (listen): " + porta);
-			
-			while (true) {
-				// accept bloqueia ate que chegue um pedido de conexao de um cliente
-				// Assim que um cliente se conectar, o programa continuará, por isso dizemos que esse método é blocante, 
-				//segura a thread até que algo o notifique.
-				//Nesta caso, escuta faz o papel de servidor.
-				Socket cliente = escuta.accept();
+			while (entrada.hasNextLine()) {
+				boolean sair = false;
+				String answer = entrada.nextLine();
 				
-				//System.out.println("*** conexao aceita de (remoto): " + cliente.getRemoteSocketAddress());
-				// quando chega, cria nova thread para atender apenas o cliente
-				Conexao c = new Conexao(cliente);
-				
-				System.out.println("Tecle I para iniciar um novo jogo:");
+				if (answer.equalsIgnoreCase("i")) {
+					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
+					Jogo jogo = new Jogo();
+					jogo.novaPergunta();
+					
+					while (entrada.hasNextLine()) {
+						answer = entrada.nextLine();
+						jogo.responder(answer.charAt(0));
+						
+						System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
+						if (entrada.hasNextLine()) {
+							if (entrada.nextLine().equalsIgnoreCase("n")) {
+								sair = true;
+								break;
+							} else {
+								jogo.novaPergunta();
+							}
+						}
+					}
+				}
+				else if (answer.equalsIgnoreCase("s")) {
+					sair = true;
+					break;
+				}
+				if (sair) {
+					System.out.println("ADEUS!");
+				}
 			}
+			
+			entrada.close();
+			servidor.close();
 		} catch (IOException e) {
 			System.out.println("Erro na escuta: " + e.getMessage());
 		}
