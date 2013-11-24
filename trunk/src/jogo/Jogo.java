@@ -29,12 +29,16 @@ public class Jogo {
 		}
 	}
 	
-	public void responder(char resposta) {
+	public boolean responder(char resposta) {
 		if (perguntaAtual.certaResposta(resposta)) {
 			System.out.println("CERTA RESPOSTA!!\n\n");
+			
+			//retira a pergunta respondida corretamente da lista remanescente.
 			perguntas.remove(perguntaAtual);
+			return true;
 		} else {
-			System.out.println("OPA, VOCÊ ERROU! U_U\n\n");
+			System.out.println("VOCÊ ERROU!\n\n");
+			return false;
 		}
 	}
 
