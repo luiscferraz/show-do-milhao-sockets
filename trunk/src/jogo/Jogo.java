@@ -161,5 +161,15 @@ public class Jogo {
 		
 		return this.pontuarSeguindoJogo(numeroDaPergunta)-500000;
 	}
+	
+	public int pontuarErrandoPergunta(int numeroDaPergunta){
+		
+		if((numeroDaPergunta>=2) && (numeroDaPergunta<=14)){
+				return this.pontuarParandoJogo(numeroDaPergunta)/2;
+		}
+		
+			
+		return 0;
+	}
 
 }
