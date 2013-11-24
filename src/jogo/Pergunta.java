@@ -19,6 +19,7 @@ public class Pergunta {
 		this.alternativaA = altA;
 		this.alternativaB = altB;
 		this.alternativaC = altC;
+		this.alternativaD = altD;
 		this.respostaCorreta = resposta;
 	}
 
@@ -69,11 +70,19 @@ public class Pergunta {
 	public void setRespostaCorreta(char respostaCorreta) {
 		this.respostaCorreta = respostaCorreta;
 	}
+	
+	public boolean certaResposta(char resposta) {
+		if (resposta == respostaCorreta) {
+			return true;
+		} else { 
+			return false;
+		}
+	}
 
 	@Override
 	public String toString() {
 		return "Pergunta - " + pergunta + "\n\n a) "
-				+ alternativaA + "\n b)" + alternativaB
-				+ "\n c)" + alternativaC + "\n d)" + alternativaD + "\n";
+				+ alternativaA + "\n b) " + alternativaB
+				+ "\n c) " + alternativaC + "\n d) " + alternativaD + "\n";
 	}
 }
