@@ -8,8 +8,8 @@ public class Jogo {
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private Random r = new Random();
 	private Pergunta perguntaAtual;
+	private int numeroDaPergunta = 1;
 	
-		
 	public ArrayList<Pergunta> getPerguntas() {
 		return perguntas;
 	}
@@ -17,7 +17,6 @@ public class Jogo {
 	public void setPerguntas(ArrayList<Pergunta> perguntas) {
 		this.perguntas = perguntas;
 	}
-
 
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
@@ -92,9 +91,15 @@ public class Jogo {
 		try{
 			if (perguntaAtual.certaResposta(resposta)) {
 				System.out.println("CERTA RESPOSTA!!\n\n");
-				
 				//retira a pergunta respondida corretamente da lista remanescente.
 				perguntas.remove(perguntaAtual);
+				
+				System.out.println("\n\nSTATUS: ");
+				System.out.println("\nPegunta atual - " + numeroDaPergunta);
+				System.out.println("Pontuação atual - " + this.pontuarSeguindoJogo(numeroDaPergunta));
+				System.out.println("Caso parasse - " + this.pontuarParandoJogo(numeroDaPergunta));
+				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta(numeroDaPergunta) + "\n\n");
+				numeroDaPergunta += 1;
 				return true;
 			} else {
 				System.out.println("VOCÊ ERROU!\n\n");
@@ -108,71 +113,33 @@ public class Jogo {
 	}
 	
 	public int pontuarSeguindoJogo(int numeroDaPergunta){		
-		
 		if((numeroDaPergunta>=1) && (numeroDaPergunta<=5)){
-			return 1000;
+			return (numeroDaPergunta * 1000);
+		} else if ((numeroDaPergunta>=6) && (numeroDaPergunta<=10)){
+			return ((numeroDaPergunta-5) * 10000);
+		} else if ((numeroDaPergunta>=11) && (numeroDaPergunta<=15)){
+			return ((numeroDaPergunta-10) * 100000);
+		} else if (numeroDaPergunta==16){
+			return 1000000;
 		} else {
-			if(numeroDaPergunta==6){
-				return 5000;
-			}else{
-				if((numeroDaPergunta>=7)&&(numeroDaPergunta<=10) ){
-					return 10000;
-				}else{
-					if(numeroDaPergunta==11){
-						return 50000;
-					}else{
-						if((numeroDaPergunta>=12)&&(numeroDaPergunta<=15)){
-							return 100000;
-						}
-					}
-					
-				}
-			}
+			return 0;
 		}
-		
-		return 500000;
 	}
 	
 	//ainda em dúvida se está correto
 	public int pontuarParandoJogo(int numeroDaPergunta){
-		if(numeroDaPergunta==1){
-			return this.pontuarSeguindoJogo(numeroDaPergunta)/2;
+		if (numeroDaPergunta == 1) {
+			return 500;
 		} else {
-			if((numeroDaPergunta>=2) && (numeroDaPergunta<=5)){
-				return this.pontuarSeguindoJogo(numeroDaPergunta)-1000;
-			} else {
-				if(numeroDaPergunta==6){
-					return this.pontuarSeguindoJogo(numeroDaPergunta)-5000;
-				}else{
-					if((numeroDaPergunta>=7)&&(numeroDaPergunta<=10) ){
-						return this.pontuarSeguindoJogo(numeroDaPergunta)-10000;
-					}else{
-						if(numeroDaPergunta==11){
-							return this.pontuarSeguindoJogo(numeroDaPergunta)-50000;
-						}else{
-							if((numeroDaPergunta>=12)&&(numeroDaPergunta<=15)){
-								return this.pontuarSeguindoJogo(numeroDaPergunta)-100000;
-							}
-						}
-					}
-				}
-			}
+			return this.pontuarSeguindoJogo(numeroDaPergunta - 1);
 		}
-		
-		return this.pontuarSeguindoJogo(numeroDaPergunta)-500000;
 	}
 	
 	public int pontuarErrandoPergunta(int numeroDaPergunta){
-		
-		if((numeroDaPergunta>=2) && (numeroDaPergunta<=14)){
-			System.out.println("Número da pergunta no método da classe jogo:" + numeroDaPergunta);
-			return this.pontuarParandoJogo(numeroDaPergunta)/2;
-		}else{
+		if (numeroDaPergunta == 1) {
 			return 0;
+		} else {
+			return (this.pontuarParandoJogo(numeroDaPergunta)/2);
 		}
-		
-			
-		
 	}
-
 }
