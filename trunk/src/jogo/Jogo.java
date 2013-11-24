@@ -36,14 +36,20 @@ public class Jogo {
 	}
 
 	public Jogo() {
-		Pergunta perg1 = new Pergunta("Qual o sobrenome de Marcela?", "Amaral", "Monteiro", "Domingues", "Ferraz", 'c');
+		Pergunta perg1 = new Pergunta("Quem era o homem mais sedutor do mundo?", "Dom Huan", "Dom Antônio", "Dom Marco", "Dom Carlos", 'a');
 		perguntas.add(perg1);
-		Pergunta perg2 = new Pergunta("Qual o sobrenome de Allan?", "Amaral", "Monteiro", "Domingues", "Ferraz", 'a');
+		Pergunta perg2 = new Pergunta("De quantos anos é constituído um século?", "50", "100", "1.000", "1.500", 'b');
 		perguntas.add(perg2);
-		Pergunta perg3 = new Pergunta("Qual o sobrenome de Fernanda?", "Amaral", "Monteiro", "Domingues", "Ferraz", 'b');
+		Pergunta perg3 = new Pergunta("Qual o coletivo de cães?", "Matilha", "Rebanho", "Cardume", "Manada", 'a');
 		perguntas.add(perg3);
-		Pergunta perg4 = new Pergunta("Qual o sobrenome de Luis?", "Amaral", "Monteiro", "Domingues", "Ferraz", 'd');
+		Pergunta perg4 = new Pergunta("Segundo a Bíblia, em que rio Jesus foi batizado por João Batista?", "No Rio Nilo", "No Rio Sena", "No Rio Reno", "No Rio Jordão", 'd');
 		perguntas.add(perg4);
+		Pergunta perg5 = new Pergunta("Qual a maior floresta do mundo?", "Negra", "De Sherwood", "Da Tijuca", "Amazônica", 'd');
+		perguntas.add(perg5);
+		Pergunta perg6 = new Pergunta("Qual o nipe do baralho que tem desenho de coração?", "Ouros", "Paus", "Copas", "Espadas", 'c');
+		perguntas.add(perg6);
+		Pergunta perg7 = new Pergunta("Qual o casal foi expulso do paraíso?", "Sansão e Dalila", "José e Maria", "Sara e Abraão", "Adão e Eva", 'd');
+		perguntas.add(perg7);
 	}
 	
 	public void novaPergunta(){
@@ -73,6 +79,22 @@ public class Jogo {
 			System.out.println("VOCÊ ERROU!\n\n");
 			return false;
 		}
+	}
+	
+	public int pontuarSeguindoJogo(int numeroDaPergunta){
+		if (numeroDaPergunta>=1 && numeroDaPergunta<=5){
+			return 1000;
+			
+		} else{
+			if (numeroDaPergunta>=6 && numeroDaPergunta<=10){
+				return 10000;	
+			}else{
+				if (numeroDaPergunta>=11 && numeroDaPergunta<=15){
+					return 100000;
+				}
+			}
+		}
+		return 500000;
 	}
 
 }

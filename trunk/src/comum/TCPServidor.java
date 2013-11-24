@@ -28,6 +28,7 @@ public class TCPServidor {
 			Scanner entrada = new Scanner(cliente.getInputStream());
 			
 			ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+			int numeroDaPergunta = 1;
 			
 			while (entrada.hasNextLine()) {
 				boolean sair = false;
@@ -51,6 +52,9 @@ public class TCPServidor {
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
 						try{
+<<<<<<< .mine
+							//caso a pergunta tenha sido respondida corretamente
+=======
 							
 							if (answer.equalsIgnoreCase("p")){
 								if (pulos>0){
@@ -64,6 +68,7 @@ public class TCPServidor {
 							}
 							
 						//caso a pergunta tenha sido respondida corretamente
+>>>>>>> .r18
 							if (jogo.responder(answer.charAt(0))) {
 													
 									
@@ -81,9 +86,21 @@ public class TCPServidor {
 										
 										break;
 									} else {
-										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+1000);
-										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao());
-										jogo.novaPergunta();
+																				
+										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+ jogo.pontuarSeguindoJogo(numeroDaPergunta));
+										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao() + "\n");
+										
+										// só pode jpgar até completar um milhão, por isto o teste
+										if(jogadorAtual.getPontuacao()<1000000){
+											jogo.novaPergunta();
+										
+											numeroDaPergunta = numeroDaPergunta + 1;
+										} else{
+											sair = true;
+											break;
+										}
+										
+										
 										System.out.println("Digite 'P' para pular esta pergunta");
 									}
 								}
