@@ -9,6 +9,10 @@ public class Jogador {
 		this.pontuacao = 0;
 	}
 	
+	public Jogador(){
+		this.pontuacao =0;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
