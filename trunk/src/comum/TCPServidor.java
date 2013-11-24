@@ -46,8 +46,9 @@ public class TCPServidor {
 					String nome = entrada.nextLine();
 					Jogador jogadorAtual = new Jogador(nome);
 					
-					System.out.println("PERGUNTA -" + numeroDaPergunta);
+					System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
 					jogo.novaPergunta();
+					numeroDaPergunta = numeroDaPergunta + 1;
 					//System.out.println("Digite 'P' para pular esta pergunta");
 					
 					while (entrada.hasNextLine()) { 
@@ -93,7 +94,7 @@ public class TCPServidor {
 										
 										// só pode jpgar até completar um milhão, por isto o teste
 										if(jogadorAtual.getPontuacao()<1000000){
-											System.out.println("PERGUNTA -" + numeroDaPergunta);
+											System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
 											jogo.novaPergunta();
 											
 										
