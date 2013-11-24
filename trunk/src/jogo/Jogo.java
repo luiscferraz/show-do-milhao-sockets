@@ -136,26 +136,30 @@ public class Jogo {
 	//ainda em dúvida se está correto
 	public int pontuarParandoJogo(int numeroDaPergunta){
 		if(numeroDaPergunta==1){
-			return 500;
+			return this.pontuarSeguindoJogo(numeroDaPergunta)/2;
 		} else {
-			if((numeroDaPergunta>=2) && (numeroDaPergunta<=6)){
-				return 1000;
+			if((numeroDaPergunta>=2) && (numeroDaPergunta<=5)){
+				return this.pontuarSeguindoJogo(numeroDaPergunta)-1000;
 			} else {
-				if(numeroDaPergunta==7){
-					return 5000;
+				if(numeroDaPergunta==6){
+					return this.pontuarSeguindoJogo(numeroDaPergunta)-5000;
 				}else{
-					if((numeroDaPergunta>=8)&&(numeroDaPergunta<=11) ){
-						return 10000;
+					if((numeroDaPergunta>=7)&&(numeroDaPergunta<=10) ){
+						return this.pontuarSeguindoJogo(numeroDaPergunta)-10000;
 					}else{
-						if(numeroDaPergunta==12){
-							return 50000;
+						if(numeroDaPergunta==11){
+							return this.pontuarSeguindoJogo(numeroDaPergunta)-50000;
+						}else{
+							if((numeroDaPergunta>=12)&&(numeroDaPergunta<=15)){
+								return this.pontuarSeguindoJogo(numeroDaPergunta)-100000;
+							}
 						}
 					}
 				}
 			}
 		}
 		
-		return 100000;
+		return this.pontuarSeguindoJogo(numeroDaPergunta)-500000;
 	}
 
 }
