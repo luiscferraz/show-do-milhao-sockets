@@ -31,30 +31,38 @@ public class TCPServidor {
 				
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
+					
 					Jogo jogo = new Jogo();
 					jogo.novaPergunta();
 					
-					while (entrada.hasNextLine()) {
+					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
-						jogo.responder(answer.charAt(0));
 						
-						System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
-						if (entrada.hasNextLine()) {
-							if (entrada.nextLine().equalsIgnoreCase("n")) {
-								sair = true;
-								break;
-							} else {
-								jogo.novaPergunta();
+						//caso a pergunta tenha sido respondida corretamente
+						if (jogo.responder(answer.charAt(0))) {
+							System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
+							if (entrada.hasNextLine()) {
+								if (entrada.nextLine().equalsIgnoreCase("n")) {
+									sair = true;
+									break;
+								} else {
+									jogo.novaPergunta();
+								}
 							}
+						//caso contrario, sai do jogo
+						} else {
+							sair = true;
+							break;
 						}
 					}
 				}
+				
 				else if (answer.equalsIgnoreCase("s")) {
 					sair = true;
 					break;
 				}
 				if (sair) {
-					System.out.println("ADEUS!");
+					System.out.println("JOGO ENCERRADO!");
 				}
 			}
 			
