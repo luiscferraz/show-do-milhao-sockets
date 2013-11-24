@@ -29,37 +29,31 @@ public class TCPServidor {
 			
 			ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 			int numeroDaPergunta = 1;
-			int pulos = 3;
 			
-			Jogador jogadorAtual = new Jogador();
 			
 			while (entrada.hasNextLine()) {
 				boolean sair = false;
 				String answer = entrada.nextLine();
 				
+				int pulos = 3;
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
-					
-					Jogo jogo = new Jogo();
 					
 					//Para saber o nome do jogador para ser armazenado na lista de melhores
 					System.out.println("Digite seu nome:");
 					String nome = entrada.nextLine();
-					//Jogador jogadorAtual = new Jogador(nome);
-					jogadorAtual.setNome(nome);
+					Jogador jogadorAtual = new Jogador(nome);
 					
-					System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
+					Jogo jogo = new Jogo();
 					jogo.novaPergunta();
-					//System.out.println("Digite 'P' para pular esta pergunta");
 					
+					System.out.println("Digite 'P' para pular esta pergunta");
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
 						try{
-
-							//caso a pergunta tenha sido respondida corretamente
-
+						//caso a pergunta tenha sido respondida corretamente
 							
-							/*if (answer.equalsIgnoreCase("p")){
+							if (answer.equalsIgnoreCase("p")){
 								if (pulos>0){
 									pulos = pulos-1;
 									jogo.novaPergunta();
@@ -69,73 +63,59 @@ public class TCPServidor {
 									System.out.println("Você já utilizou suas três opções de pulo, informe a resposta desta pergunta.");
 								}
 							}
-							*/
-						//caso a pergunta tenha sido respondida corretamente
-
-							if (jogo.responder(answer.charAt(0))) {
-													
-									
-								System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
-								
-								if (entrada.hasNextLine()) {
-									if (entrada.nextLine().equalsIgnoreCase("n")) {
-										sair = true;
-										
-										//Se o jogo for encerrado deve mostrar o nome do jogador e a pontuação do mesmo
-										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+jogo.pontuarParandoJogo(numeroDaPergunta-1));
-										System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
-										System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
-										
-										
-										break;
-									} else {
-										//coloca a pontuação atual no objeto jogadorAtual 										
-										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+ jogo.pontuarSeguindoJogo(numeroDaPergunta));
-										
-										System.out.println("\nPontuação que está sendo somada:"+jogo.pontuarSeguindoJogo(numeroDaPergunta));
-										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao() + "\n");
-										
-										// só pode jpgar até completar um milhão, por isto o teste
-										if(jogadorAtual.getPontuacao()<1000000){
-											numeroDaPergunta = numeroDaPergunta + 1;
-											System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
-											
-											jogo.novaPergunta();
-											
-										
-										} else{
+							else if (jogo.responder(answer.charAt(0))) {
+									System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
+									if (entrada.hasNextLine()) {
+										if (entrada.nextLine().equalsIgnoreCase("n")) {
 											sair = true;
+											
+											//Se o jogo for encerrado deve mostrar o nome do jogador e a pontuação do mesmo
+											jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+500);
+											System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
+											System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
+											
 											break;
+										} else {
+											jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+ jogo.pontuarSeguindoJogo(numeroDaPergunta));
+											System.out.println("\nSCORE: " + jogadorAtual.getPontuacao() + "\n");
+											
+											// só pode jpgar até completar um milhão, por isto o teste
+											
+										
+											
+											if(jogadorAtual.getPontuacao()<1000000){
+												jogo.novaPergunta();
+												System.out.println("Digite 'P' para pular esta pergunta");
+												numeroDaPergunta = numeroDaPergunta + 1;
+												
+											} else{
+												sair = true;
+												break;
+											}
+											
+											
 										}
-										
-										
-										//System.out.println("Digite 'P' para pular esta pergunta");
 									}
+								//caso contrario, sai do jogo
+								} else {
+									sair = true;
+									
+									System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
+									System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
+									
+									//adiciona o jogador a lista de jogadores p armazenar seu nome e score
+									jogadores.add(jogadorAtual);
+									break;
 								}
-							//caso contrario, sai do jogo
-							} else {
-								
-								System.out.println("\npontuação do jogador:"+jogadorAtual.getPontuacao());
-								System.out.println("\npontuação pega pelo método:"+jogo.pontuarErrandoPergunta(numeroDaPergunta));
-								jogadorAtual.setPontuacao(jogo.pontuarErrandoPergunta(numeroDaPergunta));
-								
-								System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
-								System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
-								
-								//adiciona o jogador a lista de jogadores p armazenar seu nome e score
-								jogadores.add(jogadorAtual);
+							} catch (Exception ex){
 								sair = true;
+								//System.out.println("Opcao invalida. JOGO ENCERRADO!");
 								break;
 							}
-						} catch (Exception ex){
-							sair = true;
-							//System.out.println("Opcao invalida. JOGO ENCERRADO!");
-							break;
+							
 						}
-						
-					}
+					
 				}
-				
 				else if (answer.equalsIgnoreCase("s")) {
 					sair = true;
 					break;
