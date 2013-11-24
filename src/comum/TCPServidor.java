@@ -29,12 +29,11 @@ public class TCPServidor {
 			
 			ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 			int numeroDaPergunta = 1;
+			int pulos = 3;
 			
 			while (entrada.hasNextLine()) {
 				boolean sair = false;
 				String answer = entrada.nextLine();
-				
-				//int pulos = 3;
 				
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
@@ -48,7 +47,6 @@ public class TCPServidor {
 					
 					System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
 					jogo.novaPergunta();
-					numeroDaPergunta = numeroDaPergunta + 1;
 					//System.out.println("Digite 'P' para pular esta pergunta");
 					
 					while (entrada.hasNextLine()) { 
@@ -88,17 +86,21 @@ public class TCPServidor {
 										
 										break;
 									} else {
-																				
+										//coloca a pontuação atual no objeto jogadorAtual 										
 										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+ jogo.pontuarSeguindoJogo(numeroDaPergunta));
+										
+										System.out.println("\nPontuação que está sendo somada:"+jogo.pontuarSeguindoJogo(numeroDaPergunta));
 										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao() + "\n");
 										
 										// só pode jpgar até completar um milhão, por isto o teste
 										if(jogadorAtual.getPontuacao()<1000000){
+											numeroDaPergunta = numeroDaPergunta + 1;
 											System.out.println("\n\nPERGUNTA -" + numeroDaPergunta);
+											
 											jogo.novaPergunta();
 											
 										
-											numeroDaPergunta = numeroDaPergunta + 1;
+											
 										} else{
 											sair = true;
 											break;
