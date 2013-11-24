@@ -96,5 +96,29 @@ public class Jogo {
 		}
 		return 500000;
 	}
+	
+	//ainda em dúvida se está correto
+	public int pontuarParandoJogo(int numeroDaPergunta){
+		if(numeroDaPergunta==1){
+			return 500;			
+		}else{
+			if(numeroDaPergunta>=2 && numeroDaPergunta<=6){
+				return 100;
+			} else{
+				if(numeroDaPergunta>=7 && numeroDaPergunta<=12){
+					return 1000;
+				} else{
+					if(numeroDaPergunta==13){
+						return 4000;
+					} else {
+						if (numeroDaPergunta==19){
+							return 40000;
+						}
+					}
+				}
+			}
+		}
+		return 100000;
+	}
 
 }
