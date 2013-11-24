@@ -30,7 +30,7 @@ public class TCPServidor {
 			ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 			int numeroDaPergunta = 1;
 			
-			
+			Jogador jogadorAtual = new Jogador();
 			while (entrada.hasNextLine()) {
 				boolean sair = false;
 				String answer = entrada.nextLine();
@@ -42,7 +42,8 @@ public class TCPServidor {
 					//Para saber o nome do jogador para ser armazenado na lista de melhores
 					System.out.println("Digite seu nome:");
 					String nome = entrada.nextLine();
-					Jogador jogadorAtual = new Jogador(nome);
+					//Jogador jogadorAtual = new Jogador(nome);
+					jogadorAtual.setNome(nome);
 					
 					Jogo jogo = new Jogo();
 					jogo.novaPergunta();
@@ -98,13 +99,16 @@ public class TCPServidor {
 									}
 								//caso contrario, sai do jogo
 								} else {
-									sair = true;
+									System.out.println("\npontuação do jogador:"+jogadorAtual.getPontuacao());
+									System.out.println("\npontuação pega pelo método:"+jogo.pontuarErrandoPergunta(numeroDaPergunta));
+									jogadorAtual.setPontuacao(jogo.pontuarErrandoPergunta(numeroDaPergunta));
 									
 									System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
 									System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
 									
 									//adiciona o jogador a lista de jogadores p armazenar seu nome e score
 									jogadores.add(jogadorAtual);
+									sair = true;
 									break;
 								}
 							} catch (Exception ex){
