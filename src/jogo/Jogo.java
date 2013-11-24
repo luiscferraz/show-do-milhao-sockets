@@ -50,6 +50,32 @@ public class Jogo {
 		perguntas.add(perg6);
 		Pergunta perg7 = new Pergunta("Qual o casal foi expulso do paraíso?", "Sansão e Dalila", "José e Maria", "Sara e Abraão", "Adão e Eva", 'd');
 		perguntas.add(perg7);
+		Pergunta perg8 = new Pergunta("Qual foi o santo que só acreditou vendo?", "Santo Antônio", "São Judas Tadeu", "São Pedro", "São Tomé", 'd');
+		perguntas.add(perg8);
+		Pergunta perg9 = new Pergunta("Qual é o fruto conhecido no nordeste como 'jerimum'?", "Caju", "Abóbora", "Chuchu", "Coco", 'b');
+		perguntas.add(perg9);
+		Pergunta perg10 = new Pergunta("Como é conhecido o jogador Edmundo?", "Tigrão", "Gatinho", "Animal", "Cobra", 'c');
+		perguntas.add(perg10);
+		Pergunta perg11 = new Pergunta("Na literatura, quem foi o criador da boneca Emília?", "Monteiro Lobato", "Maurício de Souza", "Walt Disney", "Jorge Amado", 'a');
+		perguntas.add(perg11);
+		Pergunta perg12 = new Pergunta("Quem é o prieiro substituto do presidente?", "Vereador", "Vice-presidente", "Senador", "Deputado", 'b');
+		perguntas.add(perg12);
+		Pergunta perg13 = new Pergunta("Segundo o romance qual animal era 'Moby Dick'?", "Tubarão", "Golfinho", "Povo", "Baleia", 'd');
+		perguntas.add(perg13);
+		Pergunta perg14 = new Pergunta("Qual é o animal que representa o signo de áries?", "Touro", "Leão", "Carneiro", "Bode", 'd');
+		perguntas.add(perg14);
+		Pergunta perg15 = new Pergunta("Que animal é o pateta?", "Burro", "Cachorro", "Cavalo", "Raposa", 'b');
+		perguntas.add(perg15);
+		Pergunta perg16 = new Pergunta("Em qual cidade está o Cristo Redentor do Corcovado?", "Rio de Janeiro", "São Paulo", "Curitiba", "Recife", 'a');
+		perguntas.add(perg16);
+		Pergunta perg17 = new Pergunta("Quantos centímetros equivalem a um metro?", "10", "100", "1000", "10000", 'b');
+		perguntas.add(perg17);
+		Pergunta perg18 = new Pergunta("Qual é o nome do macho da abelha?", "Zangão", "Abelhão", "Rufião", "Pulgão", 'a');
+		perguntas.add(perg18);
+		Pergunta perg19 = new Pergunta("Qual é o inseto que transmite a Doeça de Chagas?", "Abelha", "Barata", "Barbeiro", "Pulga", 'c');
+		perguntas.add(perg19);
+		Pergunta perg20 = new Pergunta("Qual é o nome da missa rezada no Natal?", "Campal", "do Galo", "do Vaticano", "do Sétimo dia", 'b');
+		perguntas.add(perg20);
 	}
 	
 	public void novaPergunta(){
