@@ -5,9 +5,36 @@ import java.util.Random;
 
 public class Jogo {
 	private ArrayList<Pergunta> perguntas = new ArrayList<Pergunta>();
+	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private Random r = new Random();
 	private Pergunta perguntaAtual;
 	
+		
+	public ArrayList<Pergunta> getPerguntas() {
+		return perguntas;
+	}
+
+	public void setPerguntas(ArrayList<Pergunta> perguntas) {
+		this.perguntas = perguntas;
+	}
+
+
+	public ArrayList<Jogador> getJogadores() {
+		return jogadores;
+	}
+
+	public void setJogadores(ArrayList<Jogador> jogadores) {
+		this.jogadores = jogadores;
+	}
+
+	public Pergunta getPerguntaAtual() {
+		return perguntaAtual;
+	}
+
+	public void setPerguntaAtual(Pergunta perguntaAtual) {
+		this.perguntaAtual = perguntaAtual;
+	}
+
 	public Jogo() {
 		Pergunta perg1 = new Pergunta("Qual o sobrenome de Marcela?", "Amaral", "Monteiro", "Domingues", "Ferraz", 'c');
 		perguntas.add(perg1);
