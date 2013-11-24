@@ -52,9 +52,9 @@ public class TCPServidor {
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
 						try{
-<<<<<<< .mine
+
 							//caso a pergunta tenha sido respondida corretamente
-=======
+
 							
 							if (answer.equalsIgnoreCase("p")){
 								if (pulos>0){
@@ -68,7 +68,7 @@ public class TCPServidor {
 							}
 							
 						//caso a pergunta tenha sido respondida corretamente
->>>>>>> .r18
+
 							if (jogo.responder(answer.charAt(0))) {
 													
 									
