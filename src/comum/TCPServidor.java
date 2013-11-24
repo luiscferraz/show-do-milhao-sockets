@@ -79,7 +79,7 @@ public class TCPServidor {
 										sair = true;
 										
 										//Se o jogo for encerrado deve mostrar o nome do jogador e a pontuação do mesmo
-										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+500);
+										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+jogo.pontuarParandoJogo(numeroDaPergunta));
 										System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
 										System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
 										

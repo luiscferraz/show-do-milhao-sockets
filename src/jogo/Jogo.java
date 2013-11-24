@@ -107,8 +107,7 @@ public class Jogo {
 		}
 	}
 	
-	public int pontuarSeguindoJogo(int numeroDaPergunta){
-		
+	public int pontuarSeguindoJogo(int numeroDaPergunta){		
 		
 		if((numeroDaPergunta>=1) && (numeroDaPergunta<=5)){
 			return 1000;
