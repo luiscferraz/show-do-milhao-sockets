@@ -165,12 +165,14 @@ public class Jogo {
 	public int pontuarErrandoPergunta(int numeroDaPergunta){
 		
 		if((numeroDaPergunta>=2) && (numeroDaPergunta<=14)){
-			System.out.println("Número da pergunta no método da classe jogo:" + this.pontuarParandoJogo(numeroDaPergunta));
+			System.out.println("Número da pergunta no método da classe jogo:" + numeroDaPergunta);
 			return this.pontuarParandoJogo(numeroDaPergunta)/2;
+		}else{
+			return 0;
 		}
 		
 			
-		return 0;
+		
 	}
 
 }

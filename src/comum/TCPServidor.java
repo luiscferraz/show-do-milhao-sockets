@@ -114,10 +114,9 @@ public class TCPServidor {
 								}
 							//caso contrario, sai do jogo
 							} else {
-								sair = true;
-								//numeroDaPergunta = numeroDaPergunta+1;
-								System.out.println("\n"+numeroDaPergunta);
+								
 								System.out.println("\npontuação do jogador:"+jogadorAtual.getPontuacao());
+								System.out.println("\npontuação pega pelo método:"+jogo.pontuarErrandoPergunta(numeroDaPergunta));
 								jogadorAtual.setPontuacao(jogo.pontuarErrandoPergunta(numeroDaPergunta));
 								
 								System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
@@ -125,7 +124,7 @@ public class TCPServidor {
 								
 								//adiciona o jogador a lista de jogadores p armazenar seu nome e score
 								jogadores.add(jogadorAtual);
-								
+								sair = true;
 								break;
 							}
 						} catch (Exception ex){
