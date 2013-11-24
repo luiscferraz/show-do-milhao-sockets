@@ -29,7 +29,6 @@ public class TCPServidor {
 			
 			ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 			int numeroDaPergunta = 1;
-			int pulos = 3;
 			
 			Jogador jogadorAtual = new Jogador();
 			
@@ -37,10 +36,10 @@ public class TCPServidor {
 				boolean sair = false;
 				String answer = entrada.nextLine();
 				
+				int pulos = 3;
+				
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
-					
-					Jogo jogo = new Jogo();
 					
 					//Para saber o nome do jogador para ser armazenado na lista de melhores
 					System.out.println("Digite seu nome:");
@@ -48,9 +47,11 @@ public class TCPServidor {
 					//Jogador jogadorAtual = new Jogador(nome);
 					jogadorAtual.setNome(nome);
 					
+					Jogo jogo = new Jogo();
 					System.out.println("\n\nPERGUNTA - " + numeroDaPergunta);
 					jogo.novaPergunta();
-					//System.out.println("Digite 'P' para pular esta pergunta");
+					
+					System.out.println("Digite 'P' para pular esta pergunta");
 					
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
@@ -59,7 +60,7 @@ public class TCPServidor {
 							//caso a pergunta tenha sido respondida corretamente
 
 							
-							/*if (answer.equalsIgnoreCase("p")){
+							if (answer.equalsIgnoreCase("p")){
 								if (pulos>0){
 									pulos = pulos-1;
 									jogo.novaPergunta();
@@ -68,12 +69,9 @@ public class TCPServidor {
 								else{
 									System.out.println("Você já utilizou suas três opções de pulo, informe a resposta desta pergunta.");
 								}
-							}
-							*/
-						//caso a pergunta tenha sido respondida corretamente
+							}//caso a pergunta tenha sido respondida corretamente
 
-							if (jogo.responder(answer.charAt(0))) {
-													
+							else if (jogo.responder(answer.charAt(0))) {													
 									
 								System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
 								
@@ -91,16 +89,14 @@ public class TCPServidor {
 										break;
 									} else {
 										//coloca a pontuação atual no objeto jogadorAtual 										
-										jogadorAtual.setPontuacao(jogadorAtual.getPontuacao()+ jogo.pontuarSeguindoJogo(numeroDaPergunta));
+										jogadorAtual.setPontuacao(jogo.pontuarSeguindoJogo(numeroDaPergunta));
 										
-										System.out.println("\nPontuação que está sendo somada:"+jogo.pontuarSeguindoJogo(numeroDaPergunta));
 										System.out.println("\nSCORE: " + jogadorAtual.getPontuacao() + "\n");
 										
-										// só pode jpgar até completar um milhão, por isto o teste
 										if(jogadorAtual.getPontuacao()<1000000){
 											numeroDaPergunta = numeroDaPergunta + 1;
-											System.out.println("\n\nPERGUNTA - " + numeroDaPergunta);
 											
+											System.out.println("Digite 'P' para pular esta pergunta");
 											jogo.novaPergunta();
 											
 										
@@ -118,7 +114,7 @@ public class TCPServidor {
 								sair = true;
 								//numeroDaPergunta = numeroDaPergunta+1;
 								System.out.println("\n"+numeroDaPergunta);
-								System.out.println("\npontuação do jogador:"+jogadorAtual.getPontuacao());
+								System.out.println("\npontuação do jogador:"+jogo.pontuarErrandoPergunta(numeroDaPergunta));
 								jogadorAtual.setPontuacao(jogo.pontuarErrandoPergunta(numeroDaPergunta));
 								
 								System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
