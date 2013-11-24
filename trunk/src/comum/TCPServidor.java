@@ -34,7 +34,7 @@ public class TCPServidor {
 				boolean sair = false;
 				String answer = entrada.nextLine();
 				
-				int pulos = 3;
+				//int pulos = 3;
 				
 				if (answer.equalsIgnoreCase("i")) {
 					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
@@ -46,8 +46,9 @@ public class TCPServidor {
 					String nome = entrada.nextLine();
 					Jogador jogadorAtual = new Jogador(nome);
 					
+					System.out.println("PERGUNTA -" + numeroDaPergunta);
 					jogo.novaPergunta();
-					System.out.println("Digite 'P' para pular esta pergunta");
+					//System.out.println("Digite 'P' para pular esta pergunta");
 					
 					while (entrada.hasNextLine()) { 
 						answer = entrada.nextLine();
@@ -56,7 +57,7 @@ public class TCPServidor {
 							//caso a pergunta tenha sido respondida corretamente
 
 							
-							if (answer.equalsIgnoreCase("p")){
+							/*if (answer.equalsIgnoreCase("p")){
 								if (pulos>0){
 									pulos = pulos-1;
 									jogo.novaPergunta();
@@ -66,7 +67,7 @@ public class TCPServidor {
 									System.out.println("Você já utilizou suas três opções de pulo, informe a resposta desta pergunta.");
 								}
 							}
-							
+							*/
 						//caso a pergunta tenha sido respondida corretamente
 
 							if (jogo.responder(answer.charAt(0))) {
@@ -92,7 +93,9 @@ public class TCPServidor {
 										
 										// só pode jpgar até completar um milhão, por isto o teste
 										if(jogadorAtual.getPontuacao()<1000000){
+											System.out.println("PERGUNTA -" + numeroDaPergunta);
 											jogo.novaPergunta();
+											
 										
 											numeroDaPergunta = numeroDaPergunta + 1;
 										} else{
@@ -101,7 +104,7 @@ public class TCPServidor {
 										}
 										
 										
-										System.out.println("Digite 'P' para pular esta pergunta");
+										//System.out.println("Digite 'P' para pular esta pergunta");
 									}
 								}
 							//caso contrario, sai do jogo
