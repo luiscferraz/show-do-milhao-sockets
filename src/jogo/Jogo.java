@@ -105,7 +105,7 @@ public class Jogo {
 	public boolean responder(char resposta) {
 		try{
 			if (perguntaAtual.certaResposta(resposta)) {
-				System.out.println("CERTA RESPOSTA!!\n\n");
+				System.out.println(" ====== CERTA RESPOSTA!! ========");
 				//retira a pergunta respondida corretamente da lista remanescente.
 				jogadorAtual.getPerguntasDoJogador().remove(perguntaAtual);
 				
@@ -118,12 +118,12 @@ public class Jogo {
 				
 				return true;
 			} else {
-				System.out.println("VOCÊ ERROU!\n\n");
+				System.out.println("): VOCÊ ERROU! :(");
 				return false;
 			}
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
-			System.out.println("VOCÊ ERROU!\n\n");
+			System.out.println("): VOCÊ ERROU! :( ");
 			return false;
 		}
 	}
@@ -268,5 +268,4 @@ public class Jogo {
 		}
 		jogadorAtual.setAjuda(true);
 	}
-	
 }

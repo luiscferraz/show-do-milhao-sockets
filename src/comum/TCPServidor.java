@@ -53,11 +53,12 @@ public class TCPServidor {
 							jogo.getJogadorAtual().setNome(nome);
 							
 							System.out.println("INSTRUÇÕES DE JOGO\n");
-							System.out.println("- Digite os valores das alternativas (entre 'a' e 'd') para responder as perguntas.");
-							System.out.println("- Digite 'p' para pular a questão (você só pode dar 3 pulos).");
-							System.out.println("- Digite 'u' para pedir ajuda aos universitários.");
-							System.out.println("- Digite 'r' para pedir ajuda às cartas.");
-							System.out.println("Bom jogo!\n");
+							System.out.println("- Digite os valores das alternativas (entre 'A' e 'D') para responder as perguntas.");
+							System.out.println("- Digite 'P' para pular a questão (você só pode dar 3 pulos).");
+							System.out.println("- Digite 'U' para pedir ajuda aos universitários.");
+							System.out.println("- Digite 'R' para pedir ajuda às cartas.");
+							System.out.println("- Digite 'L' para pedir ajuda às cartas.");
+							System.out.println("Bom jogo!");
 							
 							jogo.novaPergunta();
 							
@@ -109,7 +110,7 @@ public class TCPServidor {
 									//Caso a pergunta tenha sido respondida corretamente
 									else if (jogo.responder(answer.charAt(0))) {													
 											
-										System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)\n");
+										System.out.println("QUER CONTINUAR? (Digite 's' para continuar e 'n' para sair do jogo)");
 										
 										if (entrada.hasNextLine()) {
 											
@@ -126,7 +127,6 @@ public class TCPServidor {
 												
 											} else {
 												jogo.novaPergunta();
-												System.out.println("Digite 'P' para pular esta pergunta");
 											}
 										}
 									}
@@ -135,11 +135,6 @@ public class TCPServidor {
 									else {
 										//Jogador sair do jogo parando - Opção 1
 										jogo.jogadorSairDoJogo(1);
-										Jogador jogadorAtual = jogo.getJogadorAtual();
-										//Mostrar o nome do jogador e a pontuação do mesmo
-										System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
-										System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
-										
 										break;
 									}
 								} catch (Exception ex){
