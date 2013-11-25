@@ -96,6 +96,16 @@ public class TCPServidor {
 										}
 									}
 									
+									//Caso peça ajuda a plateia
+									else if (answer.equalsIgnoreCase("l")) {
+										if (jogo.getJogadorAtual().isAjuda()) {
+											System.out.println("VOCE JÁ PEDIU AJUDA! \n");
+										} else {
+											jogo.ajudaPlacas();
+											System.out.println("\nAGORA RESPONDA:\n");
+										}
+									}
+									
 									//Caso a pergunta tenha sido respondida corretamente
 									else if (jogo.responder(answer.charAt(0))) {													
 											
