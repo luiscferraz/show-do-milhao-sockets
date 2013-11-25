@@ -1,6 +1,8 @@
 package jogo;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -47,45 +49,45 @@ public class Jogo {
 	}
 	
 	public Jogo() {
-		Pergunta perg1 = new Pergunta("Quem era o homem mais sedutor do mundo?", "Dom Huan", "Dom Ant√¥nio", "Dom Marco", "Dom Carlos", 'a');
+		Pergunta perg1 = new Pergunta("Quem era o homem mais sedutor do mundo?", "Dom Huan", "Dom AntÙnio", "Dom Marco", "Dom Carlos", 'a');
 		perguntas.add(perg1);
-		Pergunta perg2 = new Pergunta("De quantos anos √© constitu√≠do um s√©culo?", "50", "100", "1.000", "1.500", 'b');
+		Pergunta perg2 = new Pergunta("De quantos anos È constituÌdo um sÈculo?", "50", "100", "1.000", "1.500", 'b');
 		perguntas.add(perg2);
-		Pergunta perg3 = new Pergunta("Qual o coletivo de c√£es?", "Matilha", "Rebanho", "Cardume", "Manada", 'a');
+		Pergunta perg3 = new Pergunta("Qual o coletivo de c„es?", "Matilha", "Rebanho", "Cardume", "Manada", 'a');
 		perguntas.add(perg3);
-		Pergunta perg4 = new Pergunta("Segundo a B√≠blia, em que rio Jesus foi batizado por Jo√£o Batista?", "No Rio Nilo", "No Rio Sena", "No Rio Reno", "No Rio Jord√£o", 'd');
+		Pergunta perg4 = new Pergunta("Segundo a BÌblia, em que rio Jesus foi batizado por Jo„o Batista?", "No Rio Nilo", "No Rio Sena", "No Rio Reno", "No Rio Jord„o", 'd');
 		perguntas.add(perg4);
-		Pergunta perg5 = new Pergunta("Qual a maior floresta do mundo?", "Negra", "De Sherwood", "Da Tijuca", "Amaz√¥nica", 'd');
+		Pergunta perg5 = new Pergunta("Qual a maior floresta do mundo?", "Negra", "De Sherwood", "Da Tijuca", "AmazÙnica", 'd');
 		perguntas.add(perg5);
-		Pergunta perg6 = new Pergunta("Qual o nipe do baralho que tem desenho de cora√ß√£o?", "Ouros", "Paus", "Copas", "Espadas", 'c');
+		Pergunta perg6 = new Pergunta("Qual o nipe do baralho que tem desenho de coraÁ„o?", "Ouros", "Paus", "Copas", "Espadas", 'c');
 		perguntas.add(perg6);
-		Pergunta perg7 = new Pergunta("Qual o casal foi expulso do para√≠so?", "Sans√£o e Dalila", "Jos√© e Maria", "Sara e Abra√£o", "Ad√£o e Eva", 'd');
+		Pergunta perg7 = new Pergunta("Qual o casal foi expulso do paraÌso?", "Sans„o e Dalila", "JosÈ e Maria", "Sara e Abra„o", "Ad„o e Eva", 'd');
 		perguntas.add(perg7);
-		Pergunta perg8 = new Pergunta("Qual foi o santo que s√≥ acreditou vendo?", "Santo Ant√¥nio", "S√£o Judas Tadeu", "S√£o Pedro", "S√£o Tom√©", 'd');
+		Pergunta perg8 = new Pergunta("Qual foi o santo que sÛ acreditou vendo?", "Santo AntÙnio", "S„o Judas Tadeu", "S„o Pedro", "S„o TomÈ", 'd');
 		perguntas.add(perg8);
-		Pergunta perg9 = new Pergunta("Qual √© o fruto conhecido no nordeste como 'jerimum'?", "Caju", "Ab√≥bora", "Chuchu", "Coco", 'b');
+		Pergunta perg9 = new Pergunta("Qual È o fruto conhecido no nordeste como 'jerimum'?", "Caju", "AbÛbora", "Chuchu", "Coco", 'b');
 		perguntas.add(perg9);
-		Pergunta perg10 = new Pergunta("Como √© conhecido o jogador Edmundo?", "Tigr√£o", "Gatinho", "Animal", "Cobra", 'c');
+		Pergunta perg10 = new Pergunta("Como È conhecido o jogador Edmundo?", "Tigr„o", "Gatinho", "Animal", "Cobra", 'c');
 		perguntas.add(perg10);
-		Pergunta perg11 = new Pergunta("Na literatura, quem foi o criador da boneca Em√≠lia?", "Monteiro Lobato", "Maur√≠cio de Souza", "Walt Disney", "Jorge Amado", 'a');
+		Pergunta perg11 = new Pergunta("Na literatura, quem foi o criador da boneca EmÌlia?", "Monteiro Lobato", "MaurÌcio de Souza", "Walt Disney", "Jorge Amado", 'a');
 		perguntas.add(perg11);
-		Pergunta perg12 = new Pergunta("Quem √© o prieiro substituto do presidente?", "Vereador", "Vice-presidente", "Senador", "Deputado", 'b');
+		Pergunta perg12 = new Pergunta("Quem È o prieiro substituto do presidente?", "Vereador", "Vice-presidente", "Senador", "Deputado", 'b');
 		perguntas.add(perg12);
-		Pergunta perg13 = new Pergunta("Segundo o romance qual animal era 'Moby Dick'?", "Tubar√£o", "Golfinho", "Povo", "Baleia", 'd');
+		Pergunta perg13 = new Pergunta("Segundo o romance qual animal era 'Moby Dick'?", "Tubar„o", "Golfinho", "Povo", "Baleia", 'd');
 		perguntas.add(perg13);
-		Pergunta perg14 = new Pergunta("Qual √© o animal que representa o signo de √°ries?", "Touro", "Le√£o", "Carneiro", "Bode", 'd');
+		Pergunta perg14 = new Pergunta("Qual È o animal que representa o signo de ·ries?", "Touro", "Le„o", "Carneiro", "Bode", 'd');
 		perguntas.add(perg14);
-		Pergunta perg15 = new Pergunta("Que animal √© o pateta?", "Burro", "Cachorro", "Cavalo", "Raposa", 'b');
+		Pergunta perg15 = new Pergunta("Que animal È o pateta?", "Burro", "Cachorro", "Cavalo", "Raposa", 'b');
 		perguntas.add(perg15);
-		Pergunta perg16 = new Pergunta("Em qual cidade est√° o Cristo Redentor do Corcovado?", "Rio de Janeiro", "S√£o Paulo", "Curitiba", "Recife", 'a');
+		Pergunta perg16 = new Pergunta("Em qual cidade est· o Cristo Redentor do Corcovado?", "Rio de Janeiro", "S„o Paulo", "Curitiba", "Recife", 'a');
 		perguntas.add(perg16);
-		Pergunta perg17 = new Pergunta("Quantos cent√≠metros equivalem a um metro?", "10", "100", "1000", "10000", 'b');
+		Pergunta perg17 = new Pergunta("Quantos centÌmetros equivalem a um metro?", "10", "100", "1000", "10000", 'b');
 		perguntas.add(perg17);
-		Pergunta perg18 = new Pergunta("Qual √© o nome do macho da abelha?", "Zang√£o", "Abelh√£o", "Rufi√£o", "Pulg√£o", 'a');
+		Pergunta perg18 = new Pergunta("Qual È o nome do macho da abelha?", "Zang„o", "Abelh„o", "Rufi„o", "Pulg„o", 'a');
 		perguntas.add(perg18);
-		Pergunta perg19 = new Pergunta("Qual √© o inseto que transmite a Doe√ßa de Chagas?", "Abelha", "Barata", "Barbeiro", "Pulga", 'c');
+		Pergunta perg19 = new Pergunta("Qual È o inseto que transmite a doen„ de chagas?", "Abelha", "Barata", "Barbeiro", "Pulga", 'c');
 		perguntas.add(perg19);
-		Pergunta perg20 = new Pergunta("Qual √© o nome da missa rezada no Natal?", "Campal", "do Galo", "do Vaticano", "do S√©timo dia", 'b');
+		Pergunta perg20 = new Pergunta("Qual È o nome da missa rezada no Natal?", "Campal", "do Galo", "do Vaticano", "do SÈtimo dia", 'b');
 		perguntas.add(perg20);
 	}
 	
@@ -109,21 +111,21 @@ public class Jogo {
 				//retira a pergunta respondida corretamente da lista remanescente.
 				jogadorAtual.getPerguntasDoJogador().remove(perguntaAtual);
 				
-				System.out.println("\n\nSTATUS: ");
-				System.out.println("\nPegunta atual - " + numeroDaPergunta);
-				System.out.println("Pontua√ß√£o atual - " + this.pontuarSeguindoJogo(numeroDaPergunta));
-				System.out.println("Caso parasse - " + this.pontuarParandoJogo(numeroDaPergunta));
-				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta(numeroDaPergunta) + "\n\n");
+				//System.out.println("\n\nSTATUS: ");
+				//System.out.println("\nPegunta atual - " + numeroDaPergunta);
+				System.out.println("PontuaÁ„o atual - " + this.pontuarSeguindoJogo(numeroDaPergunta));
+				//System.out.println("Caso parasse - " + this.pontuarParandoJogo(numeroDaPergunta));
+				//System.out.println("Caso errasse - " + this.pontuarErrandoPergunta(numeroDaPergunta) + "\n\n");
 				numeroDaPergunta += 1;
 				
 				return true;
 			} else {
-				System.out.println("): VOC√ä ERROU! :(");
+				System.out.println("): VOC  ERROU! :(");
 				return false;
 			}
 		}catch(Exception ex){
 			System.out.println(ex.getMessage());
-			System.out.println("): VOC√ä ERROU! :( ");
+			System.out.println("): VOC  ERROU! :( ");
 			return false;
 		}
 	}
@@ -143,8 +145,11 @@ public class Jogo {
 		}
 		jogadores.add(jogadorAtual);
 		System.out.println("\n\nRANK DOS JOGADORES:\n");
-		for (Jogador jog : jogadores) {
+		int n = 1;
+		for (Jogador jog : this.rankingJogadores()) {
+			System.out.println(n + "∫ lugar:");
 			System.out.println(jog);
+			n +=1;
 		}
 	}
 	
@@ -181,9 +186,9 @@ public class Jogo {
 	}
 	
 	public void ajudaUniversitarios() {		
-		System.out.println("Universit√°rio 1 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
-		System.out.println("Universit√°rio 2 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
-		System.out.println("Universit√°rio 3 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		System.out.println("Universit·rio 1 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		System.out.println("Universit·rio 2 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		System.out.println("Universit·rio 3 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
 		jogadorAtual.setAjuda(true);
 	}
 	
@@ -261,11 +266,20 @@ public class Jogo {
 	
 	public void ajudaPlacas() {		
 		for (int i = 0 ; i < 4 ; i++) {
-			System.out.println("('-')/ " + this.conversaoIntParaChar(r.nextInt(4)) + 
-					" ('-')/ " + this.conversaoIntParaChar(r.nextInt(4)) + 
-							" ('-')/ " + this.conversaoIntParaChar(r.nextInt(4)) +
-									" ('-')/ " + this.conversaoIntParaChar(r.nextInt(4)));
+			System.out.println("o/ " + this.conversaoIntParaChar(r.nextInt(4)) + 
+					" o/ " + this.conversaoIntParaChar(r.nextInt(4)) + 
+							" o/ " + this.conversaoIntParaChar(r.nextInt(4)) +
+									" o/ " + this.conversaoIntParaChar(r.nextInt(4)));
 		}
 		jogadorAtual.setAjuda(true);
+	}
+	
+	public ArrayList<Jogador> rankingJogadores(){
+		//ArrayList<Jogador> listaRankeada = new ArrayList<Jogador>();
+		
+	    ComparadorDeJogadores comparador = new ComparadorDeJogadores();
+	    Collections.sort(this.jogadores,comparador);
+		
+		return this.jogadores;
 	}
 }
