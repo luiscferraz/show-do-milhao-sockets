@@ -195,4 +195,47 @@ public class Jogo {
 			return 'd';
 		}
 	}
+	
+	public int ajudaCartas(Pergunta pergunta){
+		ArrayList<String> cartasBaralho = new ArrayList<String>();
+		ArrayList<String> alternativas = new ArrayList<>();
+		
+		cartasBaralho.add("A");
+		cartasBaralho.add("2");
+		cartasBaralho.add("3");
+		cartasBaralho.add("K");
+		
+		alternativas.add(pergunta.getAlternativaA());
+		alternativas.add(pergunta.getAlternativaB());
+		alternativas.add(pergunta.getAlternativaC());
+		alternativas.add(pergunta.getAlternativaD());
+		
+				
+		Random rand = new Random();
+		int index = rand.nextInt(cartasBaralho.size());
+		String cartaEscolhida = cartasBaralho.get(index);
+		
+		
+		char respostaCorreta = pergunta.getRespostaCorreta();
+		int indexRespostaCorreta = alternativas.indexOf(pergunta.mostrarAlternativaCorreta(pergunta));
+		
+		
+		if(cartaEscolhida.equalsIgnoreCase("k")){
+			System.out.println("\nCarta escolhida: K. Nenhuma alternativa eliminada!" );
+		}
+		
+		if(cartaEscolhida.equalsIgnoreCase("A")){
+			alternativas.remove(indexRespostaCorreta);
+			
+			Random r = new Random();
+			int indexRespostaErrada = r.nextInt(alternativas.size());
+			
+			alternativas.remove(indexRespostaErrada);
+			
+			
+		}
+		
+		
+	}
+	
 }
