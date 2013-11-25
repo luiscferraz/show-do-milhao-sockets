@@ -1,6 +1,7 @@
 package jogo;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Jogo {
@@ -142,7 +143,9 @@ public class Jogo {
 		}
 		jogadores.add(jogadorAtual);
 		System.out.println("\n\nRANK DOS JOGADORES:\n");
-		System.out.println(jogadores);
+		for (Jogador jog : jogadores) {
+			System.out.println(jog);
+		}
 	}
 	
 	public int pontuarSeguindoJogo(int num){		
@@ -196,46 +199,64 @@ public class Jogo {
 		}
 	}
 	
-	public int ajudaCartas(Pergunta pergunta){
+	public char conversaoCharParaInt(char valor) {
+		if (valor == 'a') {
+			return 0;
+		} else if (valor == 'b') {
+			return 1;
+		} else if (valor == 'c') {
+			return 2;
+		} else {
+			return 3;
+		}
+	}
+	
+	public void ajudaCartas(){
 		ArrayList<String> cartasBaralho = new ArrayList<String>();
-		ArrayList<String> alternativas = new ArrayList<>();
-		
+	
 		cartasBaralho.add("A");
 		cartasBaralho.add("2");
 		cartasBaralho.add("3");
 		cartasBaralho.add("K");
 		
-		alternativas.add(pergunta.getAlternativaA());
-		alternativas.add(pergunta.getAlternativaB());
-		alternativas.add(pergunta.getAlternativaC());
-		alternativas.add(pergunta.getAlternativaD());
+		ArrayList<Character> alternativas = new ArrayList<Character>();
 		
-				
-		Random rand = new Random();
-		int index = rand.nextInt(cartasBaralho.size());
+		alternativas.add('a');
+		alternativas.add('b');
+		alternativas.add('c');
+		alternativas.add('d');
+		
+		char respostaCorreta = this.perguntaAtual.getRespostaCorreta();
+		
+		int index = r.nextInt(cartasBaralho.size());
 		String cartaEscolhida = cartasBaralho.get(index);
-		
-		
-		char respostaCorreta = pergunta.getRespostaCorreta();
-		int indexRespostaCorreta = alternativas.indexOf(pergunta.mostrarAlternativaCorreta(pergunta));
-		
 		
 		if(cartaEscolhida.equalsIgnoreCase("k")){
 			System.out.println("\nCarta escolhida: K. Nenhuma alternativa eliminada!" );
 		}
-		
-		if(cartaEscolhida.equalsIgnoreCase("A")){
-			alternativas.remove(indexRespostaCorreta);
+		else if(cartaEscolhida.equalsIgnoreCase("A")) {
+			alternativas.remove(this.conversaoCharParaInt(respostaCorreta));
 			
-			Random r = new Random();
-			int indexRespostaErrada = r.nextInt(alternativas.size());
+			int indexRespErrada = r.nextInt(alternativas.size());
 			
-			alternativas.remove(indexRespostaErrada);
-			
-			
+			System.out.println("\nCarta escolhida: A!" );
+			System.out.println("Uma alternativa eliminada: " + alternativas.get(indexRespErrada));	
 		}
-		
-		
+		else if(cartaEscolhida.equalsIgnoreCase("3")) {
+			alternativas.remove(this.conversaoCharParaInt(respostaCorreta));
+			
+			int indexRespErrada1 = r.nextInt(alternativas.size());
+			int indexRespErrada2 = r.nextInt(alternativas.size());
+			
+			System.out.println("\nCarta escolhida: 2!" );
+			System.out.println("Duas alternativas eliminadas: " + alternativas.get(indexRespErrada1) + " e "
+					+ alternativas.get(indexRespErrada2));	
+		}
+		else {
+			System.out.println("\nCarta escolhida: 3!" );
+			System.out.println("Alternativa correta: " + respostaCorreta);	
+		}
+		jogadorAtual.setAjuda(true);
 	}
 	
 }

@@ -35,28 +35,28 @@ public class TCPServidor {
 				int pulos = 3;
 				
 				if (answer.equalsIgnoreCase("i")) {
-					System.out.println("VAI COMEÇAR O SHOW DO MILHÃO!!\n\n");
+					System.out.println("\n ========= VAI COMEÇAR O SHOW DO MILHÃO!! ============\n\n");
 					
 					Jogo jogo = new Jogo();
 					
 					
 					
 					while (sair==false) {
-						System.out.println("CRIAR NOVO JOGADOR (Responda com 's'/'n')?");
+						System.out.println("CRIAR NOVO JOGADOR (Responda com 's'/'n')?\n");
 						
 						if (entrada.nextLine().equalsIgnoreCase("s")) {
 							//Para saber o nome do jogador para ser armazenado na lista de melhores
-							System.out.println("Digite seu nome:");
+							System.out.println("Digite seu nome:\n");
 							String nome = entrada.nextLine();
 							
 							jogo.novoJogador(new Jogador());
 							jogo.getJogadorAtual().setNome(nome);
 							
-							System.out.println("INSTRUÇÕES DE JOGO\n\n");
-							System.out.println("- Digite os valores das alternativas (entre 'a' e 'd') para responder as perguntas.\n");
-							System.out.println("- Digite 'p' para pular a questão (você só pode dar 3 pulos).\n");
-							System.out.println("- Digite 'u' para pedir ajuda aos universitários.\n");
-							System.out.println("- Digite 'r' para pedir ajuda às cartas.\n");
+							System.out.println("INSTRUÇÕES DE JOGO\n");
+							System.out.println("- Digite os valores das alternativas (entre 'a' e 'd') para responder as perguntas.");
+							System.out.println("- Digite 'p' para pular a questão (você só pode dar 3 pulos).");
+							System.out.println("- Digite 'u' para pedir ajuda aos universitários.");
+							System.out.println("- Digite 'r' para pedir ajuda às cartas.");
 							System.out.println("Bom jogo!\n");
 							
 							jogo.novaPergunta();
@@ -83,6 +83,16 @@ public class TCPServidor {
 											jogo.ajudaUniversitarios();
 											System.out.println("\nE AGORA, " + jogo.getJogadorAtual().getNome().toUpperCase() + " QUAL "
 												+ "ALTERNATIVA VOCÊ ESCOLHE? \n");
+										}
+									}
+									
+									//Caso peça ajuda as cartas
+									else if (answer.equalsIgnoreCase("r")) {
+										if (jogo.getJogadorAtual().isAjuda()) {
+											System.out.println("VOCE JÁ PEDIU AJUDA! \n");
+										} else {
+											jogo.ajudaCartas();
+											System.out.println("\nAGORA ESCOLHA A RESPOSTA ENTRE AS ALTERNATIVAS RESTANTES:\n");
 										}
 									}
 									
