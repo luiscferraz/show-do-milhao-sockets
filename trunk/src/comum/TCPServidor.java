@@ -57,7 +57,7 @@ public class TCPServidor {
 							System.out.println("- Digite 'P' para pular a questão (você só pode dar 3 pulos).");
 							System.out.println("- Digite 'U' para pedir ajuda aos universitários.");
 							System.out.println("- Digite 'R' para pedir ajuda às cartas.");
-							System.out.println("- Digite 'L' para pedir ajuda às cartas.");
+							System.out.println("- Digite 'L' para pedir ajuda às placas.");
 							System.out.println("Bom jogo!");
 							
 							jogo.novaPergunta();
@@ -119,9 +119,6 @@ public class TCPServidor {
 												//Jogador sair do jogo parando - Opção 2
 												jogo.jogadorSairDoJogo(2);
 												Jogador jogadorAtual = jogo.getJogadorAtual();
-												//Se o jogo for encerrado deve mostrar o nome do jogador e a pontuação do mesmo
-												System.out.println("Nome: "+ jogadorAtual.getNome() + "\n" );
-												System.out.println("SCORE: " + jogadorAtual.getPontuacao() + "\n");
 												
 												break;
 												
@@ -142,6 +139,9 @@ public class TCPServidor {
 									break;
 								}
 							}
+						}
+						else {
+							sair = true;
 						}
 					}
 				}
