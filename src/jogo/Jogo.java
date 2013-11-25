@@ -110,17 +110,9 @@ public class Jogo {
 				
 				System.out.println("\n\nSTATUS: ");
 				System.out.println("\nPegunta atual - " + numeroDaPergunta);
-				System.out.println("Pontuação atual - " + this.pontuarSeguindoJogo());
-				System.out.println("Caso parasse - " + this.pontuarParandoJogo());
-				//ISSO DEVE SER APAGADO QND OS PRINTS FOREM APAGADOS
-				if (this.numeroDaPergunta != 1) {
-					this.numeroDaPergunta += 1;
-				}
-				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta() + "\n\n");
-				//ISSO DEVE SER APAGADO QND OS PRINTS FOREM APAGADOS
-				if (this.numeroDaPergunta != 1) {
-					this.numeroDaPergunta += 1;
-				}
+				System.out.println("Pontuação atual - " + this.pontuarSeguindoJogo(numeroDaPergunta));
+				System.out.println("Caso parasse - " + this.pontuarParandoJogo(numeroDaPergunta));
+				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta(numeroDaPergunta) + "\n\n");
 				numeroDaPergunta += 1;
 				
 				return true;
@@ -138,27 +130,29 @@ public class Jogo {
 	public void jogadorSairDoJogo(int opcao) {
 		//sair do jogo errando
 		if (opcao == 1) {
-			jogadorAtual.setPontuacao(this.pontuarErrandoPergunta());
+			jogadorAtual.setPontuacao(this.pontuarErrandoPergunta(numeroDaPergunta));
 		} 
 		//sair do jogo parando
 		else if (opcao == 2) {
-			jogadorAtual.setPontuacao(this.pontuarParandoJogo());
+			jogadorAtual.setPontuacao(this.pontuarParandoJogo(numeroDaPergunta));
 		}
 		//sair do jogo ganhando
 		else if (opcao == 3){
-			jogadorAtual.setPontuacao(this.pontuarSeguindoJogo());
+			jogadorAtual.setPontuacao(this.pontuarSeguindoJogo(numeroDaPergunta));
 		}
 		jogadores.add(jogadorAtual);
+		System.out.println("\n\nRANK DOS JOGADORES:\n");
+		System.out.println(jogadores);
 	}
 	
-	public int pontuarSeguindoJogo(){		
-		if((numeroDaPergunta>=1) && (numeroDaPergunta<=5)){
-			return (numeroDaPergunta * 1000);
-		} else if ((numeroDaPergunta>=6) && (numeroDaPergunta<=10)){
-			return ((numeroDaPergunta-5) * 10000);
-		} else if ((numeroDaPergunta>=11) && (numeroDaPergunta<=15)){
-			return ((numeroDaPergunta-10) * 100000);
-		} else if (numeroDaPergunta==16){
+	public int pontuarSeguindoJogo(int num){		
+		if((num>=1) && (num<=5)){
+			return (num * 1000);
+		} else if ((num>=6) && (num<=10)){
+			return ((num-5) * 10000);
+		} else if ((num>=11) && (num<=15)){
+			return ((num-10) * 100000);
+		} else if (num==16){
 			return 1000000;
 		} else {
 			return 0;
@@ -166,20 +160,20 @@ public class Jogo {
 	}
 	
 	//ainda em dúvida se está correto
-	public int pontuarParandoJogo(){
-		if (numeroDaPergunta == 1) {
+	public int pontuarParandoJogo(int num){
+		if (num == 1) {
 			return 500;
 		} else {
-			numeroDaPergunta -= 1;
-			return this.pontuarSeguindoJogo();
+			num -= 1;
+			return this.pontuarSeguindoJogo(num);
 		}
 	}
 	
-	public int pontuarErrandoPergunta(){
-		if (numeroDaPergunta == 1) {
+	public int pontuarErrandoPergunta(int num){
+		if (num == 1) {
 			return 0;
 		} else {
-			return (this.pontuarParandoJogo()/2);
+			return (this.pontuarParandoJogo(num)/2);
 		}
 	}
 }

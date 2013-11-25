@@ -35,4 +35,9 @@ public class Jogador {
 	public void setPerguntasDoJogador(ArrayList<Pergunta> perguntasDoJogador) {
 		this.perguntasDoJogador = perguntasDoJogador;
 	}
+
+	@Override
+	public String toString() {
+		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + "]";
+	}
 }

@@ -29,6 +29,7 @@ public class TCPServidor {
 			
 			while (entrada.hasNextLine()) {				
 				boolean sair = false;
+				
 				String answer = entrada.nextLine();
 				
 				int pulos = 3;
@@ -38,7 +39,7 @@ public class TCPServidor {
 					
 					Jogo jogo = new Jogo();
 					
-					sair = false;
+					
 					
 					while (sair==false) {
 						System.out.println("CRIAR NOVO JOGADOR (Responda com 's'/'n')?");
@@ -79,8 +80,6 @@ public class TCPServidor {
 											
 											//Se escolheu parar o jogo
 											if (entrada.nextLine().equalsIgnoreCase("n")) {
-												sair = true;
-												
 												//Jogador sair do jogo parando - Opção 2
 												jogo.jogadorSairDoJogo(2);
 												Jogador jogadorAtual = jogo.getJogadorAtual();
@@ -99,7 +98,6 @@ public class TCPServidor {
 									
 									//Caso erre a pergunta, sai do jogo
 									else {
-										sair = true;
 										//Jogador sair do jogo parando - Opção 1
 										jogo.jogadorSairDoJogo(1);
 										Jogador jogadorAtual = jogo.getJogadorAtual();
@@ -110,13 +108,10 @@ public class TCPServidor {
 										break;
 									}
 								} catch (Exception ex){
-									sair = true;
 									//System.out.println("Opcao invalida. JOGO ENCERRADO!");
 									break;
 								}
 							}
-						} else {
-							sair = true;
 						}
 					}
 				}
@@ -125,7 +120,7 @@ public class TCPServidor {
 					sair = true;
 					break;
 				}
-				if (sair) {
+				else if (sair) {
 					System.out.println("JOGO ENCERRADO!");
 				}
 			}
