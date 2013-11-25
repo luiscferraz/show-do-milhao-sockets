@@ -176,4 +176,22 @@ public class Jogo {
 			return (this.pontuarParandoJogo(num)/2);
 		}
 	}
+	
+	public void ajudaUniversitarios() {		
+		System.out.println("Universitário 1 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		System.out.println("Universitário 2 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		System.out.println("Universitário 3 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+	}
+	
+	public char conversaoIntParaChar(int valor) {
+		if (valor == 1) {
+			return 'a';
+		} else if (valor == 2) {
+			return 'b';
+		} else if (valor == 3) {
+			return 'c';
+		} else {
+			return 'd';
+		}
+	}
 }

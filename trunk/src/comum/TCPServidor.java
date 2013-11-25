@@ -71,6 +71,14 @@ public class TCPServidor {
 										}
 									}
 									
+									//Caso peça ajuda aos universitarios
+									else if (answer.equalsIgnoreCase("u")) {
+										jogo.ajudaUniversitarios();
+										System.out.println("\nE AGORA, " + jogo.getJogadorAtual().getNome().toUpperCase() + " QUAL "
+												+ "ALTERNATIVA VOCÊ ESCOLHE? \n");
+										
+									}
+									
 									//Caso a pergunta tenha sido respondida corretamente
 									else if (jogo.responder(answer.charAt(0))) {													
 											
