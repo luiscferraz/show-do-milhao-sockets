@@ -181,6 +181,7 @@ public class Jogo {
 		System.out.println("Universitário 1 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
 		System.out.println("Universitário 2 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
 		System.out.println("Universitário 3 - Eu lhe indico a alternativa " + this.conversaoIntParaChar(r.nextInt(4)));
+		jogadorAtual.setAjuda(true);
 	}
 	
 	public char conversaoIntParaChar(int valor) {

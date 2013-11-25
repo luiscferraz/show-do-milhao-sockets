@@ -52,19 +52,23 @@ public class TCPServidor {
 							jogo.novoJogador(new Jogador());
 							jogo.getJogadorAtual().setNome(nome);
 							
-							jogo.novaPergunta();
+							System.out.println("INSTRUÇÕES DE JOGO\n\n");
+							System.out.println("- Digite os valores das alternativas (entre 'a' e 'd') para responder as perguntas.\n");
+							System.out.println("- Digite 'p' para pular a questão (você só pode dar 3 pulos).\n");
+							System.out.println("- Digite 'u' para pedir ajuda aos universitários.\n");
+							System.out.println("- Digite 'r' para pedir ajuda às cartas.\n");
+							System.out.println("Bom jogo!\n");
 							
-							System.out.println("Digite 'P' para pular esta pergunta");
+							jogo.novaPergunta();
 							
 							while (entrada.hasNextLine()) { 
 								answer = entrada.nextLine();
 								try{
 									//Caso tenha escolhido pular a pergunta
 									if (answer.equalsIgnoreCase("p")){
-										if (pulos>0){
-											pulos = pulos-1;
+										if (jogo.getJogadorAtual().getPulos()>0) {
+											jogo.getJogadorAtual().pular();
 											jogo.novaPergunta();
-											System.out.println("Digite 'P' para pular esta pergunta");
 										}
 										else{
 											System.out.println("Você já utilizou suas três opções de pulo, informe a resposta desta pergunta.");
@@ -73,10 +77,13 @@ public class TCPServidor {
 									
 									//Caso peça ajuda aos universitarios
 									else if (answer.equalsIgnoreCase("u")) {
-										jogo.ajudaUniversitarios();
-										System.out.println("\nE AGORA, " + jogo.getJogadorAtual().getNome().toUpperCase() + " QUAL "
+										if (jogo.getJogadorAtual().isAjuda()) {
+											System.out.println("VOCE JÁ PEDIU AJUDA! \n");
+										} else {
+											jogo.ajudaUniversitarios();
+											System.out.println("\nE AGORA, " + jogo.getJogadorAtual().getNome().toUpperCase() + " QUAL "
 												+ "ALTERNATIVA VOCÊ ESCOLHE? \n");
-										
+										}
 									}
 									
 									//Caso a pergunta tenha sido respondida corretamente
