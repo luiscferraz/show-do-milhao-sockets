@@ -6,14 +6,14 @@ import java.util.Random;
 public class Jogo {
 	private ArrayList<Pergunta> perguntas = new ArrayList<Pergunta>();
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+	private Jogador jogadorAtual;
 	private Random r = new Random();
 	private Pergunta perguntaAtual;
-	private int numeroDaPergunta = 1;
+	private int numeroDaPergunta;
 	
 	public ArrayList<Pergunta> getPerguntas() {
 		return perguntas;
 	}
-
 	public void setPerguntas(ArrayList<Pergunta> perguntas) {
 		this.perguntas = perguntas;
 	}
@@ -21,7 +21,6 @@ public class Jogo {
 	public ArrayList<Jogador> getJogadores() {
 		return jogadores;
 	}
-
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
@@ -29,11 +28,23 @@ public class Jogo {
 	public Pergunta getPerguntaAtual() {
 		return perguntaAtual;
 	}
-
 	public void setPerguntaAtual(Pergunta perguntaAtual) {
 		this.perguntaAtual = perguntaAtual;
 	}
 
+	public Jogador getJogadorAtual() {
+		return jogadorAtual;
+	}
+	public void setJogadorAtual(Jogador jogadorAtual) {
+		this.jogadorAtual = jogadorAtual;
+	}
+	public int getNumeroDaPergunta() {
+		return numeroDaPergunta;
+	}
+	public void setNumeroDaPergunta(int numeroDaPergunta) {
+		this.numeroDaPergunta = numeroDaPergunta;
+	}
+	
 	public Jogo() {
 		Pergunta perg1 = new Pergunta("Quem era o homem mais sedutor do mundo?", "Dom Huan", "Dom Antônio", "Dom Marco", "Dom Carlos", 'a');
 		perguntas.add(perg1);
@@ -77,14 +88,17 @@ public class Jogo {
 		perguntas.add(perg20);
 	}
 	
+	public void novoJogador(Jogador jogador){
+		jogadorAtual = jogador;
+		jogadorAtual.setPerguntasDoJogador(perguntas);
+		numeroDaPergunta = 1;
+	}
+	
 	public void novaPergunta(){
-		if (perguntas.size() > 0) {
-			int proxPerg = r.nextInt(perguntas.size());
-			perguntaAtual = perguntas.get(proxPerg);
-			System.out.println(perguntaAtual.toString());
-		} else {
-			System.out.println("ACABARAM AS PERGUNTAS!!!");
-		}
+		System.out.println("\n\nPERGUNTA - " + this.getNumeroDaPergunta());
+		int proxPerg = r.nextInt(jogadorAtual.getPerguntasDoJogador().size());
+		perguntaAtual = jogadorAtual.getPerguntasDoJogador().get(proxPerg);
+		System.out.println(perguntaAtual.toString());
 	}
 	
 	public boolean responder(char resposta) {
@@ -92,14 +106,20 @@ public class Jogo {
 			if (perguntaAtual.certaResposta(resposta)) {
 				System.out.println("CERTA RESPOSTA!!\n\n");
 				//retira a pergunta respondida corretamente da lista remanescente.
-				perguntas.remove(perguntaAtual);
+				jogadorAtual.getPerguntasDoJogador().remove(perguntaAtual);
 				
 				System.out.println("\n\nSTATUS: ");
 				System.out.println("\nPegunta atual - " + numeroDaPergunta);
-				System.out.println("Pontuação atual - " + this.pontuarSeguindoJogo(numeroDaPergunta));
-				System.out.println("Caso parasse - " + this.pontuarParandoJogo(numeroDaPergunta));
-				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta(numeroDaPergunta) + "\n\n");
-				numeroDaPergunta += 1;
+				System.out.println("Pontuação atual - " + this.pontuarSeguindoJogo());
+				System.out.println("Caso parasse - " + this.pontuarParandoJogo());
+				//ISSO DEVE SER APAGADO QND OS PRINTS FOREM APAGADOS
+				if (this.numeroDaPergunta != 1) {
+					this.numeroDaPergunta += 1;
+				}
+				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta() + "\n\n");
+				//ISSO DEVE SER APAGADO QND OS PRINTS FOREM APAGADOS
+				numeroDaPergunta += 2;
+				
 				return true;
 			} else {
 				System.out.println("VOCÊ ERROU!\n\n");
@@ -112,7 +132,23 @@ public class Jogo {
 		}
 	}
 	
-	public int pontuarSeguindoJogo(int numeroDaPergunta){		
+	public void jogadorSairDoJogo(int opcao) {
+		//sair do jogo errando
+		if (opcao == 1) {
+			jogadorAtual.setPontuacao(this.pontuarErrandoPergunta());
+		} 
+		//sair do jogo parando
+		else if (opcao == 2) {
+			jogadorAtual.setPontuacao(this.pontuarParandoJogo());
+		}
+		//sair do jogo ganhando
+		else if (opcao == 3){
+			jogadorAtual.setPontuacao(this.pontuarSeguindoJogo());
+		}
+		jogadores.add(jogadorAtual);
+	}
+	
+	public int pontuarSeguindoJogo(){		
 		if((numeroDaPergunta>=1) && (numeroDaPergunta<=5)){
 			return (numeroDaPergunta * 1000);
 		} else if ((numeroDaPergunta>=6) && (numeroDaPergunta<=10)){
@@ -127,19 +163,20 @@ public class Jogo {
 	}
 	
 	//ainda em dúvida se está correto
-	public int pontuarParandoJogo(int numeroDaPergunta){
+	public int pontuarParandoJogo(){
 		if (numeroDaPergunta == 1) {
 			return 500;
 		} else {
-			return this.pontuarSeguindoJogo(numeroDaPergunta - 1);
+			numeroDaPergunta -= 1;
+			return this.pontuarSeguindoJogo();
 		}
 	}
 	
-	public int pontuarErrandoPergunta(int numeroDaPergunta){
+	public int pontuarErrandoPergunta(){
 		if (numeroDaPergunta == 1) {
 			return 0;
 		} else {
-			return (this.pontuarParandoJogo(numeroDaPergunta)/2);
+			return (this.pontuarParandoJogo()/2);
 		}
 	}
 }

@@ -1,8 +1,11 @@
 package jogo;
 
+import java.util.ArrayList;
+
 public class Jogador {
 	private String nome;
 	private int pontuacao;
+	private ArrayList<Pergunta> perguntasDoJogador = new ArrayList<Pergunta>();
 	
 	public Jogador(String nome){
 		this.nome = nome;
@@ -24,5 +27,12 @@ public class Jogador {
 	}
 	public void setPontuacao(int pontuacao) {
 		this.pontuacao = pontuacao;
+	}
+
+	public ArrayList<Pergunta> getPerguntasDoJogador() {
+		return perguntasDoJogador;
+	}
+	public void setPerguntasDoJogador(ArrayList<Pergunta> perguntasDoJogador) {
+		this.perguntasDoJogador = perguntasDoJogador;
 	}
 }
