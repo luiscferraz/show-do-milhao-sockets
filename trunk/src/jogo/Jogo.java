@@ -118,7 +118,10 @@ public class Jogo {
 				}
 				System.out.println("Caso errasse - " + this.pontuarErrandoPergunta() + "\n\n");
 				//ISSO DEVE SER APAGADO QND OS PRINTS FOREM APAGADOS
-				numeroDaPergunta += 2;
+				if (this.numeroDaPergunta != 1) {
+					this.numeroDaPergunta += 1;
+				}
+				numeroDaPergunta += 1;
 				
 				return true;
 			} else {
