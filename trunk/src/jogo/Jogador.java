@@ -6,6 +6,8 @@ public class Jogador {
 	private String nome;
 	private int pontuacao;
 	private ArrayList<Pergunta> perguntasDoJogador = new ArrayList<Pergunta>();
+	private int pulos = 3;
+	private boolean ajuda = false;
 	
 	public Jogador(String nome){
 		this.nome = nome;
@@ -28,6 +30,13 @@ public class Jogador {
 	public void setPontuacao(int pontuacao) {
 		this.pontuacao = pontuacao;
 	}
+	public int getPulos() {
+		return pulos;
+	}
+
+	public void setPulos(int pulos) {
+		this.pulos = pulos;
+	}
 
 	public ArrayList<Pergunta> getPerguntasDoJogador() {
 		return perguntasDoJogador;
@@ -40,4 +49,22 @@ public class Jogador {
 	public String toString() {
 		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + "]";
 	}
+
+	public void pular() {
+		pulos -= 1;
+	}
+	
+	public void pedirAjuda() {
+		ajuda = true;
+	}
+
+	public boolean isAjuda() {
+		return ajuda;
+	}
+
+	public void setAjuda(boolean ajuda) {
+		this.ajuda = ajuda;
+	}
+	
+	
 }
