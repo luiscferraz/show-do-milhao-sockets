@@ -47,7 +47,7 @@ public class Jogador {
 
 	@Override
 	public String toString() {
-		return "Jogador [nome=" + nome + ", pontuacao=" + pontuacao + "]";
+		return "Nome - " + nome + "\nPontuacao - " + pontuacao + "\n";
 	}
 
 	public void pular() {
